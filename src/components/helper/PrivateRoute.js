@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-const PrivateRoute = () => {
-  const auth = useSelector(state => state.user.token);
+import { Navigate } from 'react-router-dom';
 
-  return <div>{auth}</div>;
+const PrivateRoute = ({ children }) => {
+  const auth = useSelector(state => state.user.value.token);
+
+  if (auth == '') {
+    return <Navigate to="/login" />;
+  }
+  return children;
 };
 
 export default PrivateRoute;

@@ -12,13 +12,14 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { login } from './helper/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const dispatchUser = useDispatch();
   const navigate = useNavigate();
-  const token = useSelector(state => state.user.token);
+  // let token = useSelector(state => state.user.value.token);
 
   //Init values
   const [values, setValues] = useState({
@@ -48,7 +49,7 @@ const Login = () => {
             token: res.data.token,
           })
         );
-        // navigate('/');
+        navigate('/');
       })
       .catch(e => {
         console.log(e);
@@ -89,7 +90,6 @@ const Login = () => {
         <Text>
           Don't have an account yet? <Link href="/register">Register here</Link>{' '}
         </Text>
-        <Text>{token}</Text>
       </VStack>
     </RegisterLoginLay>
   );
