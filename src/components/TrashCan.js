@@ -157,12 +157,12 @@ function TrashCan() {
       selector: row => row.User.Email,
     },
     {
-      name: 'Action',
+      name: 'Actions',
       button: true,
       cell: row => {
         return (
           <>
-            <Button onClick={() => editTrashCan(row)}>
+            <Button onClick={() => editTrashCan(row)} mr="1rem">
               <EditIcon />
             </Button>
             <Button onClick={() => deleteTrashCan(row)}>
@@ -176,6 +176,7 @@ function TrashCan() {
   return (
     <>
       <Flex mb="1rem">
+        <Text fontSize="xl">Trash Cans</Text>
         <Spacer />
         <Button onClick={() => addTrashCan()}>
           <AddIcon />
